@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/app.css">
-    <script  type="module" src="../src/main.js"></script>
+    <script  type="module" src="../src/main.js" ></script>
+    <script  type="module" src="../src/app.js" ></script>
     <title>Budget Tracker</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody class="entry">
+            <tbody class="entries">
                 <tr>
                     <td>
                         <input class="input input-date" type="date">
@@ -38,14 +39,14 @@
                         <input type="number" class="input input-amount">
                     </td>
                     <td>
-                        <button type="button" class="input input-amount">&#10005;</button>
+                        <button type="button" class="delete-entry">&#10005;</button>
                     </td>
                 </tr>
             </tbody>
             <tbody>
                 <tr>
                     <td colspan="5" class="controls">
-                        <button type="button" class="new-data">New Entry</button>
+                        <button type="button" class="new-entry">New Entry</button>
                     </td>
                 </tr>
             </tbody>
