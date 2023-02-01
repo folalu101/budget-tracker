@@ -74,7 +74,18 @@ export default class BudgetTracker{
     }
 
     udateSummary(){
+        const total = this.getEntryRows().reduce((total, row) =>{
+            const amount = row.querySelector(".input.amount").value;
+            const isExpense = row.querySelector("input-type").value === "expense";
+            const modifier = isExpense ? -1 : 1;
 
+            return total + ( amount * modifier);
+        }, 0);
+        const totalFormatted = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(total);
+        this.root.querySelector(".total").textContent = totalFormatted;
     }
 
     save(){
