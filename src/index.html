@@ -23,10 +23,31 @@
             <tbody class="entry">
                 <tr>
                     <td>
-                        <input>
+                        <input class="input input-date" type="date">
+                    </td>
+                    <td>
+                        <input class="input input-escribtion" type="text" placeholder="Add Description (e.g Wages, bills, etc)">
+                    </td>
+                    <td>
+                        <select class="input input-type">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" class="input input-amount">
+                    </td>
+                    <td>
+                        <button type="button" class="input input-amount">&#10005;</button>
                     </td>
                 </tr>
-
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <button type="button" class="new-data">New Entry</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
