@@ -66,7 +66,11 @@ export default class BudgetTracker{
     }
 
     load(){
-
+        const entries = JSON.parse(localStorage.GetItem("budget-tracker-entries-dev") || "[]");
+        for ( const entry of entries){
+            this.addEntry(entry);
+        }
+        this.updatesummary();
     }
 
     udateSummary(){
