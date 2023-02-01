@@ -70,7 +70,7 @@ export default class BudgetTracker{
         for ( const entry of entries){
             this.addEntry(entry);
         }
-        this.updatesummary();
+        this.updateSummary();
     }
 
     udateSummary(){
@@ -78,19 +78,39 @@ export default class BudgetTracker{
     }
 
     save(){
-
+        const data = this.getEntryRows().map(row => {
+            return {
+                date: row.querySelector(".input-date").value,
+                description: row.querySelector(".input-description").value,
+                type: row.querySelector(".input-type").value,
+                amount: parseFloat(row.querySelector(".input-amount")).value,
+            };
+        });
     }
 
     addEntry(entry = {}){
+        this.root.querySelector(".entries").insertAdjacentHTML("beforeend", BudgetTracker.entryHtml());
 
+        const row = this.root.querySelector(".entries tr:last-of-type");
+
+        row.querySelector(".input-date").value = entry.date || new Date.toISOstring().replace(/T,*/, "");
+        row.querySelector(".input-decription").value = entry.description || "";
+        row.querySelector(".input-type").value = entry.type || "income";
+        row.querySelector(".input-amount").value = entry.amount || "0";
+        row.querySelector(".delete-entry").addEventListener("click", e => {
+            this.onDeleteEntryBtnClick(e);
+        });
+        row.querySelector(".input").forEach(input => {
+            input.addEventListener("change", () => this.save());
+        });
     }
 
     getEntryRows(){
-
+        return Array.from(this.root.querySelectorAll(".entries tr"));
     }
 
     onNewEntryBtnClick(){
-
+        this.addEntry();
     }
 
     onDeleteEntryBtnClick(){
