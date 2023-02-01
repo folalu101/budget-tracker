@@ -86,6 +86,8 @@ export default class BudgetTracker{
                 amount: parseFloat(row.querySelector(".input-amount")).value,
             };
         });
+        localStorage.setItem("budget-tracker-entries-dev", JSON.stringify(data));
+        this.updateSummary();
     }
 
     addEntry(entry = {}){
@@ -113,7 +115,8 @@ export default class BudgetTracker{
         this.addEntry();
     }
 
-    onDeleteEntryBtnClick(){
-
+    onDeleteEntryBtnClick(e){
+        e.target.closest("tr").remove();
+        this.save();
     }
 }
